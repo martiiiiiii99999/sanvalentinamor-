@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz San Valentín ❤️</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#content {
+    max-width: 90%;
+    animation: fade 0.5s ease-in-out;
+}
+
+img {
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1 {
+    color: white;
+    font-size: 2em;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+<body onclick="changeContent()">
+
+<div id="content">
+    <h1>Haz clic para comenzar 💕</h1>
+</div>
+
+<script>
+let index = 0;
+
+const frases = [
+    "Eres mi persona favorita ❤️",
+    "Cada momento contigo es especial ✨",
+    "Gracias por estar a mi lado 💕",
+    "Te elegiría mil veces más 💘"
+];
+
+const fotos = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+    "foto4.jpg"
+];
+
+function changeContent() {
+    const content = document.getElementById("content");
+    content.style.animation = "none";
+    void content.offsetWidth;
+    content.style.animation = "fade 0.5s ease-in-out";
+
+    if (index % 2 === 0) {
+        const fotoIndex = Math.floor(index / 2) % fotos.length;
+        content.innerHTML = `<img src="${fotos[fotoIndex]}">`;
+    } else {
+        const fraseIndex = Math.floor(index / 2) % frases.length;
+        content.innerHTML = `<h1>${frases[fraseIndex]}</h1>`;
+    }
+
+    index++;
+}
+</script>
+
+</body>
+</html>
